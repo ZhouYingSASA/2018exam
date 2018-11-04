@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <title>exam</title>
+</head>
+<body>
+    <input id="posttoken" type="button" value="获取token" />
+    <textarea id="text" style="width: 400px; height: 100px;" placeholder="Sorry, I'm stucked by CORS"></textarea>
+    <input id="btn" type="button" value="获取数据" />
+    <textarea id="text" style="width: 400px; height: 100px;" placeholder="Sorry, I'm stucked by CORS"></textarea>
+</body>
+<script>
+    $(document).ready(function () {
+        $("#posttoken").click(function () {
+            $.ajax({
+                url: 'https://os.ncuos.com/api/user/token',
+                type: 'post',
+                headers: {username:"5904118120", password: "151550"},
+                success: function (data) {
+                    $(text).val(data);
+                }
+            })
+        })
+/*stucked by CORS*/
+        $("#btn").click(function () {
+            $.ajax({
+                url: 'https://os.ncuos.com/api/user/profile/basic',
+                type: 'GET',
+                headers: { username: "5904118120", password: "151550"},
+                success: function (data) {
+                    $(text).val(data);
+                }
+            });
+/*stucked by CORS*/
+        });
+
+    });
+/*我已经在本地尝试过不同端口的跨域，发现这种跨域在前端可以直接用script跨过，但是这次请求还是被跨域拦截*/
+</script>
+</html>
