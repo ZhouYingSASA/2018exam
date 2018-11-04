@@ -17,7 +17,7 @@
             $.ajax({
                 url: 'https://os.ncuos.com/api/user/token',
                 type: 'post',
-                headers: {username:"5904118120", password: "151550"},
+                raw: {"username":"5904118120", "password": "151550"},
                 success: function (data) {
                     $(text).val(data);
                 }
@@ -28,7 +28,7 @@
             $.ajax({
                 url: 'https://os.ncuos.com/api/user/profile/basic',
                 type: 'GET',
-                headers: { username: "5904118120", password: "151550"},
+                headers: { "token": "eyJhbGciOiJIUzI1NiIsImlhdCI6MTU0MTMyNzgzNCwiZXhwIjoxNTQxMzMwODM0fQ.eyJpZCI6Ijk5Njk4NzkzMzYiLCJleHAiOjE1NDEzMzA4MzQsInhoIjoiNTkwNDExODEyMCJ9.TTjhEOJvYs8DbmkIzPTwR0-EPXhSmTGCz6UeGm8IQbs"},
                 success: function (data) {
                     $(text).val(data);
                 }
